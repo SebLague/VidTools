@@ -8,8 +8,9 @@ using UnityEngine;
 // With some modifications
 public class Triangulator {
 
-    public static MeshData2D Triangulate (IEnumerable<Vector2> outline, IEnumerable<Vector2> innerPoints, IEnumerable<IEnumerable<Vector2>> holes) {
+    public enum Space { XY, XZ }
 
+    public static MeshData2D Triangulate (IEnumerable<Vector2> outline, IEnumerable<Vector2> innerPoints, IEnumerable<IEnumerable<Vector2>> holes) {
         Polygon polygon = new Polygon ();
 
         // Outline
@@ -31,10 +32,8 @@ public class Triangulator {
 
         var triangles = new int[triangulation.Triangles.Count * 3];
         var points = new Vector2[polygon.Points.Count];
-        var verts = new Vector3[points.Length];
         for (int i = 0; i < points.Length; i++) {
             points[i] = new Vector2 ((float) polygon.Points[i].x, (float) polygon.Points[i].y);
-            verts[i] = new Vector3 (points[i].x, points[i].y);
         }
 
         int triangleIndex = 0;
@@ -45,21 +44,28 @@ public class Triangulator {
             triangleIndex++;
         }
 
-        return new MeshData2D (points, triangles, verts);
+        return new MeshData2D (points, triangles);
     }
-
-    //public static void CreateMesh(MeshData2D data2D, float vertexZ = 0) {   
-    //}
 
     public class MeshData2D {
         public Vector2[] points;
-        public Vector3[] verts;
         public int[] triangles;
 
-        public MeshData2D (Vector2[] points, int[] triangles, Vector3[] verts) {
+        public MeshData2D (Vector2[] points, int[] triangles) {
             this.points = points;
             this.triangles = triangles;
-            this.verts = verts;
+        }
+
+        public Vector3[] CreateVertices (Space space, float missingComponentValue = 0) {
+            Vector3[] verts = new Vector3[points.Length];
+            for (int i = 0; i < points.Length; i++) {
+                if (space == Space.XY) {
+                    verts[i] = new Vector3 (points[i].x, points[i].y, missingComponentValue);
+                } else if (space == Space.XZ) {
+                    verts[i] = new Vector3 (points[i].x, missingComponentValue, points[i].y);
+                }
+            }
+            return verts;
         }
     }
 
