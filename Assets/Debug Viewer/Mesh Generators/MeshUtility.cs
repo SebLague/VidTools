@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Visualisation.MeshGeneration {
+namespace Visualization.MeshGeneration {
     public static class MeshUtility {
 
         public static void MeshFromMultipleSources (Mesh mesh, List<Vector3>[] vertexLists, List<int>[] triangleLists) {

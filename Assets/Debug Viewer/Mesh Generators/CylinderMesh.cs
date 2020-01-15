@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Visualisation.MeshGeneration {
+namespace Visualization.MeshGeneration {
     public static class CylinderMesh {
 
         const int resolution = 20;
