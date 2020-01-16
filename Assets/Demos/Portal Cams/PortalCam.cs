@@ -12,8 +12,8 @@ public class PortalCam : MonoBehaviour {
     void Update () {
         if (mirrorPlayerCam) {
             var m = myPortal.localToWorldMatrix * linkedPortal.worldToLocalMatrix * playerCam.localToWorldMatrix;
-            transform.position = m.GetColumn (3);
-            transform.rotation = m.rotation;
+            transform.SetPositionAndRotation (m.GetColumn (3), m.rotation);
+   
         }
 
     }

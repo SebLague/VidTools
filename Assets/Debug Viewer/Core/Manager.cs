@@ -106,9 +106,10 @@ namespace Visualization {
             Mesh mesh = null;
             if (inactiveMeshes.Count > 0) {
                 mesh = inactiveMeshes.Dequeue ();
-                if (mesh) {
-                    mesh.Clear ();
-                }
+            }
+
+            if (mesh) {
+                mesh.Clear ();
             } else {
                 mesh = new Mesh ();
             }

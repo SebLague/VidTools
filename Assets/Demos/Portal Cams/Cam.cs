@@ -11,6 +11,9 @@ public class Cam : MonoBehaviour {
     public float viewDst = 10;
     public Color frustrumCol = Color.white;
     public Color viewOutline = Color.white;
+    public Color camViewCol = Color.yellow;
+    public Color portalViewRegionCol = Color.red;
+    public Color triangleCol = Color.red;
 
     void Update () {
         Visualizer.SetColour (frustrumCol);
@@ -62,13 +65,18 @@ public class Cam : MonoBehaviour {
             portalRegion.Add (MathUtility.PointOfLineLineIntersection (frustrumCornerA, frustrumCornerB, portalEdgeA, portalEdgeB));
         }
 
-        Visualizer.SetColour (Color.red);
+        Visualizer.SetColour (portalViewRegionCol);
+        Visualizer.activeStyle = Visualization.Style.UnlitAlpha;
         if (portalRegion.Count >= 3) {
             Visualizer.DrawConvexHull (portalRegion, .1f);
         }
 
-        Visualizer.activeColour = Color.red;
-        Visualizer.DrawTriangle (transform.position - Vector3.forward * .1f, transform.eulerAngles.z + 180, 1, Vector3.forward);
+        Visualizer.activeColour = camViewCol;
+        Visualizer.DrawPolygon (new Vector2[] { transform.position, frustrumCornerA, frustrumCornerB }, .15f);
+
+        Visualizer.activeStyle = Visualization.Style.Unlit;
+        Visualizer.activeColour = triangleCol;
+        Visualizer.DrawTriangle (transform.position - Vector3.forward * .1f, transform.eulerAngles.z, .5f, -Vector3.forward);
 
         /*
         float j = 0;

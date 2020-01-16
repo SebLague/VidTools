@@ -74,7 +74,7 @@ public static class Visualizer {
     /// Draw a 2D triangle
     public static void DrawTriangle (Vector3 centre, float angle, float size, Vector3 normal) {
         Mesh mesh = CreateOrRecycleMesh ();
-        var rot = Quaternion.AngleAxis (angle, normal) * Quaternion.FromToRotation (Vector3.up, normal);
+        var rot = Quaternion.AngleAxis (-angle, normal) * Quaternion.FromToRotation (Vector3.up, normal);
         mesh.vertices = new Vector3[] { Vector3.forward, Vector3.back + Vector3.right, Vector3.back - Vector3.right };
         mesh.triangles = new int[] { 0, 1, 2 };
         mesh.normals = new Vector3[] { normal, normal, normal };
@@ -83,7 +83,7 @@ public static class Visualizer {
     }
 
     /// Draw a 2D arrow (on xy plane)
-    public static void DrawArrow2D (Vector2 start, Vector2 end, float lineWidth, float headSize, bool flatHead, float zDepth = 0) {
+    public static void DrawArrow2D (Vector2 start, Vector2 end, float lineWidth, float headSize, bool flatHead = true, float zDepth = 0) {
         Mesh mesh = CreateOrRecycleMesh ();
 
         Vector2 forward = (end - start).normalized;
@@ -105,7 +105,7 @@ public static class Visualizer {
         mesh.triangles = new int[] { 0, 2, 1, 1, 2, 3, 2, 5, 4, 2, 4, 3, 3, 4, 6 };
         mesh.RecalculateBounds ();
 
-        CreateVisualElement (mesh, Vector3.zero, Quaternion.identity, Vector3.one);
+        CreateVisualElement (mesh, Vector3.forward * zDepth, Quaternion.identity, Vector3.one);
     }
 
 }
