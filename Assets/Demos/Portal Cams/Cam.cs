@@ -15,8 +15,19 @@ public class Cam : MonoBehaviour {
     public Color portalViewRegionCol = Color.red;
     public Color triangleCol = Color.red;
 
-    void Update () {
-        Visualizer.SetColour (frustrumCol);
+    float t = 1;
+    public Cam mirrorCam;
+
+    void LateUpdate () {
+        var currentViewRegionCol = portalViewRegionCol;
+        var originalM = portal.transform.position;
+        var originalR = portal.transform.rotation;
+        if (mirrorCam) {
+            //currentViewRegionCol = Color.Lerp (mirrorCam.portalViewRegionCol, portalViewRegionCol, t);
+            var m = transform.localToWorldMatrix * mirrorCam.transform.worldToLocalMatrix * mirrorCam.portal.transform.localToWorldMatrix;
+            portal.transform.SetPositionAndRotation (m.GetColumn (3), m.rotation);
+        }
+        Visualizer.SetColour (new Color (frustrumCol.r, frustrumCol.g, frustrumCol.b, t));
         float angle = transform.eulerAngles.z;
         Vector3 dirA = new Vector3 (Mathf.Cos ((angle - fov / 2 + 90) * Mathf.Deg2Rad), Mathf.Sin ((angle - fov / 2 + 90) * Mathf.Deg2Rad));
         Vector3 dirB = new Vector3 (Mathf.Cos ((angle + fov / 2 + 90) * Mathf.Deg2Rad), Mathf.Sin ((angle + fov / 2 + 90) * Mathf.Deg2Rad));
@@ -24,11 +35,11 @@ public class Cam : MonoBehaviour {
         // Draw frustrum
         var frustrumCornerA = transform.position + dirA * viewDst;
         var frustrumCornerB = transform.position + dirB * viewDst;
-        Visualizer.DrawLine (transform.position, frustrumCornerA, thickness);
-        Visualizer.DrawLine (transform.position, frustrumCornerB, thickness);
-        Visualizer.DrawLine (frustrumCornerA, frustrumCornerB, thickness);
+        //Visualizer.DrawLine (transform.position, frustrumCornerA, thickness);
+        //Visualizer.DrawLine (transform.position, frustrumCornerB, thickness);
+        //Visualizer.DrawLine (frustrumCornerA, frustrumCornerB, thickness);
 
-        Visualizer.SetColour (viewOutline);
+        Visualizer.SetColourAndStyle (viewOutline, Visualization.Style.UnlitAlpha);
 
         var portalEdgeA = portal.transform.position - portal.transform.right * portal.transform.localScale.x / 2;
         var portalEdgeB = portal.transform.position + portal.transform.right * portal.transform.localScale.x / 2;
@@ -65,7 +76,7 @@ public class Cam : MonoBehaviour {
             portalRegion.Add (MathUtility.PointOfLineLineIntersection (frustrumCornerA, frustrumCornerB, portalEdgeA, portalEdgeB));
         }
 
-        Visualizer.SetColour (portalViewRegionCol);
+        Visualizer.SetColour (currentViewRegionCol);
         Visualizer.activeStyle = Visualization.Style.UnlitAlpha;
         if (portalRegion.Count >= 3) {
             Visualizer.DrawConvexHull (portalRegion, .1f);
@@ -78,6 +89,9 @@ public class Cam : MonoBehaviour {
         Visualizer.activeColour = triangleCol;
         Visualizer.DrawTriangle (transform.position - Vector3.forward * .1f, transform.eulerAngles.z, .5f, -Vector3.forward);
 
+        if (mirrorCam) {
+            portal.transform.SetPositionAndRotation (originalM, originalR);
+        }
         /*
         float j = 0;
         foreach (var p in portalRegion) {
@@ -87,5 +101,10 @@ public class Cam : MonoBehaviour {
         }
         */
 
+    }
+
+    public void SetTime (float t, Cam other) {
+        this.t = t;
+        mirrorCam = other;
     }
 }

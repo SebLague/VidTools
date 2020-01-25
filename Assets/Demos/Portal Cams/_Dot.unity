@@ -212,6 +212,54 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &623939314
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 623939316}
+  - component: {fileID: 623939315}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &623939315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623939314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aa600af09df34400996c67a8129df03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portal: {fileID: 673994703}
+  arrowSettings: {x: 0.26, y: 0.19}
+  arrowCol: {r: 1, g: 1, b: 1, a: 1}
+  arcCol: {r: 1, g: 1, b: 1, a: 0}
+  arcRadii: {x: 0.81, y: 0.92}
+--- !u!4 &623939316
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623939314}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.63, y: 3.45, z: -0.3}
+  m_LocalScale: {x: 0.3342721, y: 0.3342721, z: 0.3342721}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &673994698
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,7 +294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 0
   dotCol: {r: 1, g: 0.23137255, b: 0.25882354, a: 1}
-  arrowDst: {x: 0.15, y: 0.48}
+  arrowDst: {x: 0, y: 2.76}
   arrowSize: {x: 0.26, y: 0.19}
   arrowCol: {r: 1, g: 0.4575472, b: 0.47692043, a: 0.5176471}
 --- !u!65 &673994700
@@ -314,227 +362,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 673994698}
-  m_LocalRotation: {x: -0, y: -0, z: 0.9326794, w: 0.36070666}
-  m_LocalPosition: {x: -10.82, y: -0.33, z: 0}
-  m_LocalScale: {x: 3.65, y: 0.35, z: 0.2125}
+  m_LocalRotation: {x: -0, y: -0, z: 0.2351818, w: 0.9719514}
+  m_LocalPosition: {x: 0.28, y: 0.6, z: 0}
+  m_LocalScale: {x: 7.1609426, y: 0.3500004, z: 0.2125}
   m_Children: []
-  m_Father: {fileID: 1673146300}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 497.713}
---- !u!1 &746914837
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 746914838}
-  m_Layer: 0
-  m_Name: Player and portal
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &746914838
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 746914837}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 856407131}
-  - {fileID: 2045914704}
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &822353130
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 822353131}
-  - component: {fileID: 822353133}
-  - component: {fileID: 822353132}
-  m_Layer: 0
-  m_Name: PortalCam
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &822353131
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 822353130}
-  m_LocalRotation: {x: -0, y: -0, z: 0.93267936, w: 0.36070663}
-  m_LocalPosition: {x: -4.8787575, y: 6.2022715, z: -0.07}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1673146300}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -0.583, y: -2.877, z: -449.52002}
---- !u!114 &822353132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 822353130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d13f295e8d3140cc8a52c4077753f45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myPortal: {fileID: 673994703}
-  linkedPortal: {fileID: 856407131}
-  playerCam: {fileID: 2045914704}
-  targetT: 0
-  timeT: 1
-  t: 0
-  mirrorPlayerCam: 1
---- !u!114 &822353133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 822353130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c05d9ee4fe50f4fed82d996d14f13c25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  portal: {fileID: 673994699}
-  thickness: 2
-  fov: 50
-  viewDst: 15
-  frustrumCol: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
-  viewOutline: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 0}
-  camViewCol: {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 1}
-  portalViewRegionCol: {r: 0.8867924, g: 0, b: 0.18176489, a: 0.44705883}
-  triangleCol: {r: 0.9811321, g: 0.87277406, b: 0.4026344, a: 1}
-  mirrorCam: {fileID: 0}
---- !u!1 &856407126
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 856407131}
-  - component: {fileID: 856407130}
-  - component: {fileID: 856407129}
-  - component: {fileID: 856407128}
-  - component: {fileID: 856407127}
-  m_Layer: 0
-  m_Name: Portal
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &856407127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 856407126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b12c4895f8af4d56a5cf149cf003168, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 0
-  dotCol: {r: 0.13665895, g: 0.60094565, b: 0.7830189, a: 1}
-  arrowDst: {x: 0.12, y: 0.48}
-  arrowSize: {x: 0.26, y: 0.19}
-  arrowCol: {r: 0.13725491, g: 0.6039216, b: 0.78431374, a: 0.5137255}
---- !u!65 &856407128
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 856407126}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &856407129
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 856407126}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: b12c390d8886c41a3a644b811445932d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &856407130
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 856407126}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &856407131
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 856407126}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.67, y: 2.93, z: 0}
-  m_LocalScale: {x: 3.65, y: 0.35, z: 0.2125}
-  m_Children: []
-  m_Father: {fileID: 746914838}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 27.205002}
 --- !u!1 &1401790155
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,7 +592,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 11.91
+  orthographic size: 6.12
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -782,111 +616,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1564294722}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1673146299
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1673146300}
-  m_Layer: 0
-  m_Name: Portal and cam
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1673146300
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1673146299}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 673994703}
-  - {fileID: 822353131}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2045914703
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2045914704}
-  - component: {fileID: 2045914706}
-  - component: {fileID: 2045914705}
-  m_Layer: 0
-  m_Name: PlayerCam
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2045914704
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2045914703}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.67, y: -5.9, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 746914838}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2045914705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2045914703}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dade35ce440642b19139e6ff2a20af9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  active: 1
-  moveSpeed: 8
-  smoothMoveTime: 0.1
-  controlRelativeToDir: 1
---- !u!114 &2045914706
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2045914703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c05d9ee4fe50f4fed82d996d14f13c25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  portal: {fileID: 856407127}
-  thickness: 2
-  fov: 50
-  viewDst: 15
-  frustrumCol: {r: 0.14150941, g: 0.14150941, b: 0.14150941, a: 0}
-  viewOutline: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 0.627451}
-  camViewCol: {r: 0.19215687, g: 0.19215687, b: 0.19215687, a: 1}
-  portalViewRegionCol: {r: 0.19579923, g: 0.5012543, b: 0.754717, a: 0.4}
-  triangleCol: {r: 0.18813777, g: 1, b: 0, a: 1}
-  mirrorCam: {fileID: 0}

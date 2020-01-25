@@ -10,7 +10,7 @@ namespace Visualization.MeshGeneration {
         public static void GenerateMesh (Mesh mesh, float angle, float innerRadius, float outerRadius) {
 
             // Validate input:
-            angle = Mathf.Min (360, angle);
+            angle = Mathf.Clamp (angle, -360, 360);
             innerRadius = Mathf.Max (0, innerRadius);
             outerRadius = Mathf.Max (0, outerRadius);
             if (outerRadius < innerRadius) {
@@ -19,7 +19,7 @@ namespace Visualization.MeshGeneration {
                 innerRadius = temp;
             }
 
-            int numIncrements = (int) Mathf.Max (5, resolution * angle / 360);
+            int numIncrements = (int) Mathf.Max (5, resolution * Mathf.Abs (angle) / 360);
 
             float angleIncrement = angle / (numIncrements - 1f);
             var verts = new Vector3[numIncrements * 2];
@@ -31,8 +31,9 @@ namespace Visualization.MeshGeneration {
                 Vector3 dir = new Vector3 (Mathf.Sin (currAngle), 0, Mathf.Cos (currAngle));
                 Vector3 pos = dir * outerRadius;
                 Vector3 posInner = dir * innerRadius;
-                verts[i * 2] = posInner;
-                verts[i * 2 + 1] = pos;
+                // If angle < 0 then reverse verts so that triangles still wind the right way
+                verts[i * 2] = (angle > 0) ? posInner : pos;
+                verts[i * 2 + 1] = (angle > 0) ? pos : posInner;
                 norms[i * 2] = Vector3.up;
                 norms[i * 2 + 1] = Vector3.up;
 

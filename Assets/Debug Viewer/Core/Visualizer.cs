@@ -93,6 +93,7 @@ public static class Visualizer {
 
         float actualHeadSize = lineWidth * 2 + headSize;
         float headBackAmount = (flatHead) ? 0 : 0.35f;
+        end -= forward * actualHeadSize;
         verts[0] = start - perp * lineWidth / 2;
         verts[1] = start + perp * lineWidth / 2;
         verts[2] = end - perp * lineWidth / 2;
