@@ -6,7 +6,7 @@ using Visualization.MeshGeneration;
 
 namespace Visualization {
 
-    public enum Style { Standard, Unlit, UnlitAlpha }
+    public enum Style { Diffuse, Unlit, UnlitAlpha }
 
     public static class Manager {
 
