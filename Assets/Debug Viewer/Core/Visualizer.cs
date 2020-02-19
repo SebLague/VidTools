@@ -9,8 +9,16 @@ public static class Visualizer {
     public static Color activeColour = Color.black;
     public static Style activeStyle = Style.Unlit;
 
+    const float lineThicknessFactor = 1 / 30f;
+
+    // --------Style Functions--------
+
     public static void SetColour (Color colour) {
         activeColour = colour;
+    }
+
+    public static void SetStyle (Style style) {
+        activeStyle = style;
     }
 
     public static void SetColourAndStyle (Color colour, Style style) {
@@ -23,12 +31,11 @@ public static class Visualizer {
     }
 
     public static void DrawLine (Vector3 start, Vector3 end, float thickness) {
-        float thicknessFactor = 1 / 25f;
         Mesh mesh = CreateOrRecycleMesh ();
         CylinderMesh.GenerateMesh (mesh);
         Vector3 centre = (start + end) / 2;
         var rot = Quaternion.FromToRotation (Vector3.up, (start - end).normalized);
-        Vector3 scale = new Vector3 (thickness * thicknessFactor, (start - end).magnitude, thickness * thicknessFactor);
+        Vector3 scale = new Vector3 (thickness * lineThicknessFactor, (start - end).magnitude, thickness * lineThicknessFactor);
         CreateVisualElement (mesh, centre, rot, scale);
     }
 
@@ -54,7 +61,7 @@ public static class Visualizer {
         DrawRing (centre, normal, startAngle, angle, 0, radius);
     }
 
-    public static void DrawPolygon (IEnumerable<Vector2> points, float zDepth = 0) {
+    public static void DrawPolygon2D (IEnumerable<Vector2> points, float zDepth = 0) {
         Mesh mesh = CreateOrRecycleMesh ();
         var meshData = Triangulator.Triangulate (points, null, null);
 
@@ -66,13 +73,13 @@ public static class Visualizer {
     }
 
     /// Draw a polygon of the convex hull of given points
-    public static void DrawConvexHull (IEnumerable<Vector2> points, float zDepth = 0) {
+    public static void DrawConvexHull2D (IEnumerable<Vector2> points, float zDepth = 0) {
         var hullPoints = ConvexHull.MakeHull (new List<Vector2> (points).ToArray ());
-        DrawPolygon (hullPoints, zDepth);
+        DrawPolygon2D (hullPoints, zDepth);
     }
 
     /// Draw a 2D triangle
-    public static void DrawTriangle (Vector3 centre, float angle, float size, Vector3 normal) {
+    public static void DrawTriangle2D (Vector3 centre, float angle, float size, Vector3 normal) {
         Mesh mesh = CreateOrRecycleMesh ();
         var rot = Quaternion.AngleAxis (-angle, normal) * Quaternion.FromToRotation (Vector3.up, normal);
         mesh.vertices = new Vector3[] { Vector3.forward, Vector3.back + Vector3.right, Vector3.back - Vector3.right };
@@ -107,6 +114,16 @@ public static class Visualizer {
         mesh.RecalculateBounds ();
 
         CreateVisualElement (mesh, Vector3.forward * zDepth, Quaternion.identity, Vector3.one);
+    }
+
+    public static void DrawArrow3D (Vector3 start, Vector3 end, float lineWidth, float headWidth) {
+        float length = (end - start).magnitude;
+        Mesh mesh = CreateOrRecycleMesh ();
+        ArrowMesh3D.GenerateMesh (mesh, length, lineWidth * lineThicknessFactor, headWidth * lineThicknessFactor);
+        Vector3 centre = (start + end) / 2;
+        var rot = Quaternion.FromToRotation (Vector3.up, (end - start).normalized);
+        Vector3 scale = Vector3.one;
+        CreateVisualElement (mesh, start, rot, scale);
     }
 
 }

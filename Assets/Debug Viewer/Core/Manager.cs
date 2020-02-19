@@ -11,7 +11,7 @@ namespace Visualization {
     public static class Manager {
 
         static readonly string[] shaderPaths = {
-            "Standard",
+            "Visualizer/Diffuse",
             "Visualizer/Unlit",
             "Visualizer/UnlitColorAlpha"
         };

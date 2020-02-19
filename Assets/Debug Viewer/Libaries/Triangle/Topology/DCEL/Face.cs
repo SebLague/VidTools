@@ -27,7 +27,6 @@ namespace TriangleNet.Topology.DCEL
         #endregion
 
         internal int id;
-        internal int mark;
 
         internal Point generator;
 

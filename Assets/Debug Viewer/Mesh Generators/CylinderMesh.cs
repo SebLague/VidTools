@@ -23,34 +23,36 @@ namespace Visualization.MeshGeneration {
             // Top/bottom face
             Vector3 bottomCentre = Vector3.down * .5f;
             Vector3 topCentre = Vector3.up * .5f;
+
+            for (int i = 0; i < resolution; i++) {
+                float angle = i / (float) (resolution) * Mathf.PI * 2;
+                Vector3 offset = new Vector3 (Mathf.Sin (angle), 0, Mathf.Cos (angle)) * radius;
+                bottomVerts.Add (bottomCentre + offset);
+                bottomTris.AddRange (new int[] { resolution, (i + 1) % resolution, i % resolution });
+
+                topVerts.Add (topCentre + offset);
+                topTris.AddRange (new int[] { resolution, i % resolution, (i + 1) % resolution });
+            }
+
+            sideVerts.AddRange (bottomVerts);
+            sideVerts.AddRange (topVerts);
+
             bottomVerts.Add (bottomCentre);
             topVerts.Add (topCentre);
 
-            for (int i = 0; i < resolution; i++) {
-                float angle = (i / (resolution - 2f)) * Mathf.PI * 2;
-                Vector3 offset = new Vector3 (Mathf.Sin (angle), 0, Mathf.Cos (angle)) * radius;
-                bottomVerts.Add (bottomCentre + offset);
-                bottomTris.AddRange (new int[] { 0, (i + 2) % resolution, (i + 1) % resolution });
-
-                topVerts.Add (topCentre + offset);
-                topTris.AddRange (new int[] { 0, (i + 1) % resolution, (i + 2) % resolution });
-            }
-
-            sideVerts.AddRange (bottomVerts.GetRange (1, bottomVerts.Count - 1));
-            sideVerts.AddRange (topVerts.GetRange (1, topVerts.Count - 1));
-
             // Sides
-            for (int i = 0; i < resolution - 2; i++) {
-                // TODO fix normal seam
+            for (int i = 0; i < resolution; i++) {
                 sideTris.Add (i);
-                sideTris.Add (i + resolution + 1);
+                sideTris.Add ((i + 1) % resolution + resolution);
                 sideTris.Add (i + resolution);
-                //
+
                 sideTris.Add (i);
-                sideTris.Add (i + 1);
-                sideTris.Add (i + resolution + 1);
+                sideTris.Add ((i + 1) % resolution);
+                sideTris.Add ((i + 1) % resolution + resolution);
             }
-            MeshUtility.MeshFromMultipleSources (mesh, new List<Vector3>[] { topVerts, bottomVerts, sideVerts }, new List<int>[] { topTris, bottomTris, sideTris });
+            var allVertLists = new List<Vector3>[] { topVerts, bottomVerts, sideVerts };
+            var allTriLists = new List<int>[] { topTris, bottomTris, sideTris };
+            MeshUtility.MeshFromMultipleSources (mesh, allVertLists, allTriLists);
         }
 
     }

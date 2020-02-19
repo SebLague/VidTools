@@ -50,7 +50,7 @@ namespace TriangleNet.IO
         private void WriteNodes(StreamWriter writer, Mesh mesh)
         {
             int outvertices = mesh.vertices.Count;
-            int nextras = mesh.nextras;
+            int nextras = 0;
 
             Behavior behavior = mesh.behavior;
 
@@ -287,7 +287,7 @@ namespace TriangleNet.IO
                     // The zero indicates that the vertices are in a separate .node file.
                     // Followed by number of dimensions, number of vertex attributes,
                     // and number of boundary markers (zero or one).
-                    writer.WriteLine("0 {0} {1} {2}", mesh.mesh_dim, mesh.nextras,
+                    writer.WriteLine("0 {0} {1} {2}", mesh.mesh_dim, 0,
                         useBoundaryMarkers ? "1" : "0");
                 }
 

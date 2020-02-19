@@ -79,15 +79,15 @@ public class Cam : MonoBehaviour {
         Visualizer.SetColour (currentViewRegionCol);
         Visualizer.activeStyle = Visualization.Style.UnlitAlpha;
         if (portalRegion.Count >= 3) {
-            Visualizer.DrawConvexHull (portalRegion, .1f);
+            Visualizer.DrawConvexHull2D (portalRegion, .1f);
         }
 
         Visualizer.activeColour = camViewCol;
-        Visualizer.DrawPolygon (new Vector2[] { transform.position, frustrumCornerA, frustrumCornerB }, .15f);
+        Visualizer.DrawPolygon2D (new Vector2[] { transform.position, frustrumCornerA, frustrumCornerB }, .15f);
 
         Visualizer.activeStyle = Visualization.Style.Unlit;
         Visualizer.activeColour = triangleCol;
-        Visualizer.DrawTriangle (transform.position - Vector3.forward * .1f, transform.eulerAngles.z, .5f, -Vector3.forward);
+        Visualizer.DrawTriangle2D (transform.position - Vector3.forward * .1f, transform.eulerAngles.z, .5f, -Vector3.forward);
 
         if (mirrorCam) {
             portal.transform.SetPositionAndRotation (originalM, originalR);
