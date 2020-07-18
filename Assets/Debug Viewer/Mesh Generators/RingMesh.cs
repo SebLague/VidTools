@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Visualization.MeshGeneration {
     public static class RingMesh {
 
-        const int resolution = 50;
+        const int resolution = 100;
 
         public static void GenerateMesh (Mesh mesh, float angle, float innerRadius, float outerRadius) {
 
