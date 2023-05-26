@@ -1,0 +1,38 @@
+#pragma kernel CSMain
+
+struct Particle
+{
+	float3 position;
+	float3 colour;
+};
+
+RWStructuredBuffer<Particle> Particles;
+uint numParticles;
+float deltaTime;
+
+// Schechter - Bridson hash: www.cs.ubc.ca/~rbridson/docs/schechter-sca08-turbulence.pdf
+uint hash(uint state)
+{
+	state = (state ^ 2747636419u) * 2654435769u;
+	state = (state ^ (state >> 16)) * 2654435769u;
+	state = (state ^ (state >> 16)) * 2654435769u;
+	return state;
+}
+
+// Scales a uint to range [0, 1]
+float scaleToRange01(uint state)
+{
+	return state / 4294967295.0;
+}
+
+[numthreads(64,1,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+	if (id.x >= numParticles) { return; }
+
+	float speed = scaleToRange01(hash(id.x)) * 10;
+	float3 dir = normalize(Particles[id.x].position);
+	float3 velocity = dir * speed;
+	Particles[id.x].position += velocity * deltaTime;
+	Particles[id.x].colour = dir * 0.5 + 0.5;
+}
